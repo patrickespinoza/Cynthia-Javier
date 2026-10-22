@@ -105,16 +105,16 @@ export default function Portada() {
             ease: "easeOut",
           }}
           className="
-            mt-2
-            font-playfair
-            text-[#282A27]
-            text-[clamp(0.85rem,2.7vw,1.35rem)]
-            font-medium
-            uppercase
-            tracking-[0.16em]
-            sm:mt-3
-            sm:tracking-[0.25em]
-          "
+  mt-2
+  font-playfair
+  text-[#282A27]
+  text-[clamp(1.2rem,3.8vw,2rem)]
+  font-medium
+  uppercase
+  tracking-[0.12em]
+  sm:mt-3
+  sm:tracking-[0.2em]
+"
         >
           30 enero 2027
         </motion.p>
