@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 // INFORMACIÓN EDITABLE - WEDLY PLUS
 // ==========================================
 
-const imagenFinal = "/finalboda.webp";
+const imagenFinal = "/Final.JPG";
 
 const iniciales = {
-  primera: "A",
-  segunda: "D",
+  primera: "C",
+  segunda: "J",
 };
 
 // ==========================================
@@ -36,7 +36,7 @@ const FinalBoda = () => {
           absolute inset-0
           h-full w-full
           object-cover
-          object-center
+          object-[center_67%]
         "
       />
 

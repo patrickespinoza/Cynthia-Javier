@@ -5,9 +5,8 @@ import Dresscode from "./componentes-encabezado/Dresscode";
 import Regalos from "./componentes-encabezado/Regalos";
 import Confirmacion from "./componentes-encabezado/Confirmacion";
 import Musica from "./componentes-encabezado/musica";
-import Padres from "./componentes-encabezado/PadresPadrinos";
-import Itinerario from "./componentes-encabezado/Itinerario";
 import FinalBoda from "./componentes-encabezado/Final";
+import Carrusel from "./componentes-encabezado/Carrusel";
 
 export default function PaginaPrincipal() {
   return (
@@ -19,13 +18,11 @@ export default function PaginaPrincipal() {
 
       <Contador />
 
-      <Padres/>
-
       <Celebracion />
 
       <Dresscode />
 
-      <Itinerario/>
+      <Carrusel/>
 
       <Regalos />
 

@@ -1,117 +1,366 @@
+
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  Shirt,
+  Sparkles,
+  Heart,
+  UsersRound,
+} from "lucide-react";
 
-const Vestimenta = ({
-  imagen = "/dresscode.png",
-}) => {
+// ==========================================
+// DECORACIÓN BOTÁNICA
+// ==========================================
+
+const RamaBotanica = ({ className = "" }) => (
+  <svg
+    viewBox="0 0 150 230"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-hidden="true"
+  >
+    <path
+      d="M15 220C34 177 50 137 77 99C99 68 112 37 126 7"
+      stroke="currentColor"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+    />
+
+    {[
+      [30, 180, -40],
+      [48, 148, 38],
+      [65, 119, -38],
+      [83, 91, 36],
+      [103, 58, -36],
+      [119, 29, 30],
+    ].map(([x, y, angle], index) => (
+      <g
+        key={index}
+        transform={`translate(${x} ${y}) rotate(${angle})`}
+      >
+        <path
+          d="M0 0C-15 -11 -14 -29 0 -38C13 -27 14 -11 0 0Z"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <path
+          d="M0 0V-32"
+          stroke="currentColor"
+          strokeWidth=".6"
+        />
+      </g>
+    ))}
+  </svg>
+);
+
+// ==========================================
+// ANIMACIONES
+// ==========================================
+
+const aparecer = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+// ==========================================
+// COMPONENTE PRINCIPAL
+// ==========================================
+
+export default function Vestimenta() {
   return (
-    <section className="w-full bg-[#F4E8DD] py-20 px-5 overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        viewport={{ once: true }}
+    <section
+      id="vestimenta"
+      className="
+        relative isolate
+        w-full overflow-hidden
+        bg-[#F4EDE3]
+        px-5 py-20
+        sm:px-8 sm:py-28
+        lg:py-32
+      "
+      style={{
+        backgroundImage:
+          "radial-gradient(ellipse at center, #FFFDF9 0%, #F4EDE3 85%)",
+      }}
+    >
+      {/* ======================================
+          RAMAS BOTÁNICAS
+      ====================================== */}
+
+      <RamaBotanica
         className="
-          max-w-6xl
-          mx-auto
-          bg-white/70
-          backdrop-blur-xl
-          rounded-tl-[4rem]
-          rounded-br-[4rem]
-          rounded-tr-2xl
-          rounded-bl-2xl
-          shadow-[0_25px_70px_rgba(74,20,29,.16)]
-          border border-[#B88A8A]/30
-          overflow-hidden
+          pointer-events-none absolute
+          -left-10 -top-12
+          h-48 w-36 rotate-180
+          text-[#B79A70]/65
+          sm:left-0 sm:top-0
+          sm:h-64 sm:w-48
+        "
+      />
+
+      <RamaBotanica
+        className="
+          pointer-events-none absolute
+          -right-10 -bottom-12
+          h-48 w-36 -scale-x-100
+          text-[#52614D]/60
+          sm:right-0 sm:bottom-0
+          sm:h-64 sm:w-48
+        "
+      />
+
+      {/* ======================================
+          CONTENIDO PRINCIPAL
+      ====================================== */}
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+          amount: 0.12,
+        }}
+        className="
+          relative z-10
+          mx-auto flex
+          w-full max-w-[850px]
+          flex-col items-center
+          text-center
         "
       >
-        <div className="grid lg:grid-cols-2">
+        {/* SUBTÍTULO */}
 
-          {/* IMAGEN */}
+        <motion.p
+          variants={aparecer}
+          className="
+            text-[11px]
+            font-medium uppercase
+            tracking-[0.35em]
+            text-[#52614D]
+            sm:text-sm
+          "
+        >
+          Nuestro día especial
+        </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9 }}
-            viewport={{ once: true }}
-            className="overflow-hidden"
-          >
-            <img
-              src={imagen}
-              alt="Dress Code"
-              className="
-                w-full
-                h-full
-                min-h-[420px]
-                object-cover
-                hover:scale-105
-                transition-transform
-                duration-700
-              "
-            />
-          </motion.div>
+        {/* TÍTULO */}
 
-          {/* TEXTO */}
+        <motion.h2
+          variants={aparecer}
+          className="
+            mt-5 font-playfair
+            text-[clamp(2.7rem,7vw,5rem)]
+            font-normal leading-[1.15]
+            text-[#102B50]
+          "
+        >
+          Código de Vestimenta
+        </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: .15 }}
-            viewport={{ once: true }}
+        {/* SEPARADOR */}
+
+        <motion.div
+          variants={aparecer}
+          className="
+            mt-7 flex items-center
+            justify-center gap-4
+          "
+        >
+          <span className="h-px w-14 bg-[#B79A70]" />
+
+          <Heart
+            size={13}
+            fill="currentColor"
+            className="text-[#B79A70]"
+          />
+
+          <span className="h-px w-14 bg-[#B79A70]" />
+        </motion.div>
+
+        {/* ======================================
+            VESTIMENTA FORMAL
+        ====================================== */}
+
+        <motion.div
+          variants={aparecer}
+          className="
+            mt-12 flex
+            flex-col items-center
+            sm:mt-16
+          "
+        >
+
+
+          <h3
             className="
-              flex
-              flex-col
-              justify-center
-              px-8
-              py-14
-              sm:px-14
+              mt-3 font-playfair
+              text-4xl font-normal
+              text-[#102B50]
+              sm:text-5xl
             "
           >
+            Formal
+          </h3>
 
-            <p className="uppercase tracking-[.35em] text-[#B88A8A] text-sm font-semibold">
-              Nuestro Día
-            </p>
+          <p
+            className="
+              mt-5 max-w-[490px]
+              text-sm leading-8
+              text-[#52614D]
+              sm:text-base
+            "
+          >
+            Nos encantará verte elegante para
+            celebrar juntos este día tan especial.
+          </p>
+        </motion.div>
 
-            <h2 className="font-playfair text-[#4A141D] text-5xl mt-5">
-              Detalles
-            </h2>
+        {/* ======================================
+            AVISO DE COLOR RESERVADO
+        ====================================== */}
 
-            <div className="w-24 h-px bg-[#B88A8A] my-8"></div>
+        <motion.div
+          variants={aparecer}
+          className="
+            mt-12 w-full max-w-[590px]
+            rounded-[22px]
+            border border-[#B79A70]/55
+            bg-[#FFFDF9]/65
+            px-5 py-9
+            shadow-[0_12px_35px_rgba(16,43,80,0.045)]
+            sm:mt-14
+            sm:px-10 sm:py-11
+          "
+        >
+          <div
+            className="
+              mx-auto flex h-14 w-14
+              items-center justify-center
+              rounded-full
+              bg-[#102B50]
+              text-[#F4EDE3]
+            "
+          >
+            <Sparkles size={23} strokeWidth={1.4} />
+          </div>
 
-            <h3 className="font-cursiveDancing text-[#B88A8A] text-5xl">
-              Código de Vestimenta
-            </h3>
+          <h3
+            className="
+              mt-5 font-playfair
+              text-2xl text-[#102B50]
+              sm:text-3xl
+            "
+          >
+            Color reservado
+          </h3>
 
-            <p className="mt-8 text-[#4A141D] text-3xl font-playfair">
-              Formal
-            </p>
+          <p
+            className="
+              mx-auto mt-4 max-w-[440px]
+              text-sm leading-8
+              text-[#52614D]
+              sm:text-base
+            "
+          >
+            El color{" "}
+            <strong className="font-semibold text-[#102B50]">
+              azul navy (azul marino)
+            </strong>{" "}
+            estará reservado para nuestras damas
+            del cortejo.
+          </p>
 
-            <p className="mt-6 text-[#4A141D]/70 leading-8 text-lg">
-              Nos encantará verte elegante para celebrar este
-              día tan especial junto a nosotros.
-            </p>
+          <p
+            className="
+              mx-auto mt-3 max-w-[440px]
+              text-sm leading-7
+              text-[#52614D]
+              sm:text-base
+            "
+          >
+            Agradecemos a nuestros invitados
+            evitar este color en su vestimenta.
+          </p>
 
-            <div className="my-10 w-16 h-px bg-[#B88A8A]"></div>
+          {/* MUESTRA DEL COLOR RESERVADO */}
 
-            <h3 className="font-cursiveDancing text-[#B88A8A] text-5xl">
-              Evento
-            </h3>
+          <div
+            className="
+              mt-7 flex flex-col
+              items-center gap-3
+            "
+          >
+            <div
+              className="
+                h-12 w-12
+                rounded-full
+                border-[3px] border-white
+                bg-[#102B50]
+                shadow-[0_0_0_1px_rgba(183,154,112,0.6)]
+              "
+              aria-label="Muestra de color azul navy"
+              role="img"
+            />
 
-            <p className="mt-6 text-[#4A141D] text-2xl font-playfair">
-              Solo para adultos
-            </p>
+            <span
+              className="
+                text-[10px] uppercase
+                tracking-[0.22em]
+                text-[#52614D]
+              "
+            >
+              Azul navy · Reservado
+            </span>
+          </div>
+        </motion.div>
 
-            <p className="mt-4 text-[#4A141D]/70 leading-8">
-              Gracias por comprender y permitirnos disfrutar
-              juntos de una velada especial.
-            </p>
+        {/* ======================================
+            CIERRE DECORATIVO
+        ====================================== */}
 
-          </motion.div>
+        <motion.div
+          variants={aparecer}
+          className="
+            mt-14 flex items-center
+            justify-center gap-4
+            sm:mt-20
+          "
+        >
+          <span className="h-px w-16 bg-[#B79A70]/75" />
 
-        </div>
+          <Heart
+            size={13}
+            fill="currentColor"
+            className="text-[#B79A70]"
+          />
+
+          <span className="h-px w-16 bg-[#B79A70]/75" />
+        </motion.div>
+
+        <motion.p
+          variants={aparecer}
+          className="
+            mt-6 font-cursiveDancing
+            text-3xl text-[#52614D]
+            sm:text-4xl
+          "
+        >
+          ¡Gracias por acompañarnos!
+        </motion.p>
       </motion.div>
     </section>
   );
-};
-
-export default Vestimenta;
+}

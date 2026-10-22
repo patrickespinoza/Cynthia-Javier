@@ -1,59 +1,123 @@
+
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Portada() {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section
+      id="portada"
+      className="
+        relative
+        isolate
+        w-full
+        h-screen
+        min-h-[500px]
+        overflow-hidden
+      "
+      style={{
+        height: "100svh",
+      }}
+    >
+      {/* ======================================
+          FOTOGRAFÍA ORIGINAL
+          Sin filtros ni degradados
+      ====================================== */}
 
-      {/* FOTO */}
       <img
-        src="/portada.png"
-        alt="Allison y David"
-        className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+        src="/portada.JPG"
+        alt="Cynthia y Javier abrazándose en el campo"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover
+          object-[center_65%]
+          sm:object-[center_55%]
+          lg:object-[center_58%]
+        "
       />
 
-      {/* Degradado para mejorar lectura */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+      {/* ======================================
+          NOMBRES Y FECHA
+          PARTE SUPERIOR
+      ====================================== */}
 
-      {/* Contenido */}
-      <div className="relative z-10 h-full flex flex-col justify-end items-center text-center px-6 pb-24">
+      <div
+        className="
+          absolute inset-x-0 top-0 z-10
+          flex flex-col items-center
+          px-3 pt-5
+          text-center
+          sm:px-6 sm:pt-7
+          md:pt-9
+          lg:pt-10
+        "
+      >
+        {/* NOMBRES */}
 
-        <p className="uppercase tracking-[0.45em] text-white/90 text-sm sm:text-base font-playfair mb-6">
-          Nos Casamos
-        </p>
-
-        <h1
+        <motion.h1
+          initial={{
+            opacity: 0,
+            y: -20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1.2,
+            ease: "easeOut",
+          }}
           className="
             font-cursiveDancing
-            text-white
-            text-6xl
-            sm:text-7xl
-            md:text-8xl
-            lg:text-[7rem]
-            leading-none
-            drop-shadow-2xl
+            text-[#282A27]
+            text-[clamp(2.9rem,9vw,6.5rem)]
+            font-normal
+            leading-[1.1]
+            tracking-[-0.025em]
+            drop-shadow-[0_1px_2px_rgba(255,255,255,0.35)]
           "
         >
-          Allison & David
-        </h1>
+          Cynthia & Javier
+        </motion.h1>
 
-        <div className="w-24 h-px bg-white/70 my-8"></div>
+        {/* FECHA */}
 
-        <div
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.35,
+            ease: "easeOut",
+          }}
           className="
-            px-8
-            py-3
-            rounded-full
-            bg-white/15
-            backdrop-blur-lg
-            border
-            border-white/20
+            mt-2
+            font-playfair
+            text-[#282A27]
+            text-[clamp(0.85rem,2.7vw,1.35rem)]
+            font-medium
+            uppercase
+            tracking-[0.16em]
+            sm:mt-3
+            sm:tracking-[0.25em]
           "
         >
-          <p className="font-playfair text-white text-lg sm:text-xl tracking-[0.2em] uppercase">
-            11 · Junio · 2027
-          </p>
-        </div>
-
+          30 enero 2027
+        </motion.p>
       </div>
     </section>
   );
