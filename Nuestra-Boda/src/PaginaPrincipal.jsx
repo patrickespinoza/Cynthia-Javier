@@ -7,6 +7,7 @@ import Confirmacion from "./componentes-encabezado/Confirmacion";
 import Musica from "./componentes-encabezado/musica";
 import FinalBoda from "./componentes-encabezado/Final";
 import Carrusel from "./componentes-encabezado/Carrusel";
+import Padres from "./componentes-encabezado/Padres";
 
 export default function PaginaPrincipal() {
   return (
@@ -17,6 +18,8 @@ export default function PaginaPrincipal() {
       <Portada />
 
       <Contador />
+
+      <Padres/>
 
       <Celebracion />
 
